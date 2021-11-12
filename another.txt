@@ -1,0 +1,31 @@
+import * as msalNode from "@azure/msal-node";
+import * as abCd from "test";
+import { ConnectionPolicy, ConsistencyLevel, DatabaseAccount, PartitionKey } from "./documents";
+import { Constants, HTTPMethod, OperationType, ResourceType } from "./common/constants";
+import { FeedOptions, RequestOptions, Response } from "./request";
+import { FetchFunctionCallback, SqlQuerySpec } from "./queryExecutionContext";
+import { executePlugins, PluginOn } from "./plugins/Plugin";
+import {
+  Pipeline,
+  bearerTokenAuthenticationPolicy,
+  createEmptyPipeline
+} from "@azure/core-rest-pipeline";
+import { StatusCodes, SubStatusCodes } from "./common/statusCodes";
+import { getIdFromLink, getPathFromLink, parseLink } from "./common/helper";
+import { BulkOptions } from "./utils/batch";
+import { CosmosClientOptions } from "./CosmosClientOptions";
+import { CosmosHeaders } from "./queryExecutionContext/CosmosHeaders";
+import { ErrorResponse } from "./request";
+import { GlobalEndpointManager } from "./globalEndpointManager";
+import { PartitionKeyRange } from "./client/Container/PartitionKeyRange";
+import { PartitionedQueryExecutionInfo } from "./request/ErrorResponse";
+import { QueryIterator } from "./queryIterator";
+import { RequestContext } from "./request/RequestContext";
+import { Resource } from "./client/Resource";
+import { SessionContainer } from "./session/sessionContainer";
+import { SessionContext } from "./session/SessionContext";
+import { request as executeRequest } from "./request/RequestHandler";
+import { getHeaders } from "./request/request";
+import { logger } from "./common/logger";
+import { sanitizeEndpoint } from "./utils/checkURL";
+import { v4 } from "uuid";
