@@ -92,11 +92,13 @@ public class Main {
 
             boolean isAll = false;
             for (String parse : parsed) {
-                if (parse.charAt(0) == '*') {
-                    isAll = true;
-//                    System.out.println("YES");
+                if (!(parse.length() == 1 && parse.charAt(0) == ' ')) {
+                    if (parse.charAt(0) == '*') {
+                        isAll = true;
+                        //                    System.out.println("YES");
+                    }
+                    data.add(parse.trim());
                 }
-                data.add(parse.trim());
             }
 
             data.sort();
@@ -123,7 +125,7 @@ public class Main {
         for (Data d : list) {
             System.out.print(d.left + " ");
 
-            boolean enter = d.contents.size() >= 5;
+            boolean enter = d.contents.size() >= 4;
             if (enter) {
                 System.out.print("\n  ");
             }

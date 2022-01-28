@@ -1,1 +1,17 @@
-import { env, RecorderEnvironmentSetup } from "@azure-tools/test-recorder";
+import { assert } from "chai";
+import {
+  createEmptyPipeline,
+  createHttpHeaders,
+  HttpClient,
+  HttpHeaders,
+  HttpMethods,
+} from "@azure/core-rest-pipeline";
+import {
+  createSerializer,
+  deserializationPolicy,
+  FullOperationResponse,
+  OperationRequest,
+  OperationResponseMap,
+  Serializer,
+  ServiceClient
+} from "../../src";
